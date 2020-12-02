@@ -1,0 +1,416 @@
+<!-- Main -->
+<div class="content-area">
+  <div class="container container-top">
+    <div class="row">
+      <% postsRandom.forEach(el => { %>
+      <a
+        href="/post/<%=el._id%>"
+        class="col-lg-4 col-md-12"
+        style="
+          background: url('/img/logo/<%=el.logo%>') no-repeat center
+            center/cover;
+        "
+      >
+        <div>
+          <p>
+            <%= el.title %>
+          </p>
+        </div>
+      </a>
+      <% }); %>
+    </div>
+  </div>
+
+  <div class="container content">
+    <div class="row">
+      <div class="col-lg-8 col-md-12 content-left">
+        <div class="search-left">
+          <div class="title-right">
+            search blog
+          </div>
+          <div class="contentsub-right">
+            <form action="/search" action="GET">
+              <input
+                type="text"
+                placeholder="Search..."
+                name="search"
+                id="search"
+              />
+              <button
+                type="submit"
+                style="border: none; background-color: #fff;"
+              >
+                <i class="fa fa-search fa-2x"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="blog-news">
+          <div class="title">
+            <a href="/category/news">Blog News</a>
+            <div class="view-all">
+              <a href="/category/news"
+                ><i class="fa fa-bars"><span>All News</span></i></a
+              >
+            </div>
+          </div>
+          <div class="row blog-news-box">
+            <% postsNews.forEach((el) => { %>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="box">
+                <div class="img-contain" style="width: 120px; height: 120px;">
+                  <a href="/post/<%= el._id %> ">
+                    <img
+                      src="/img/logo/<%= el.logo %>"
+                      alt="<%= el.title %>"
+                      style="width: 120px; height: 120px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="/post/<%= el._id %>">
+                    <p>
+                      <%= el.title %>
+                    </p>
+                  </a>
+                  <i class="fa fa-clock-o"><%= el.date %></i>
+                  <i class="fa fa-eye"><%= el.views %></i>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+
+        <div class="row css-html-box">
+          <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0;">
+            <div class="title title-left">
+              <a href="/category/CSS">css</a>
+              <div class="view-all">
+                <a href="/category/CSS">
+                  <i class="fa fa-bars"><span>All News</span></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-lg-12 col-md-12">
+                <div class="box clear">
+                  <div class="img-contain" style="height: 180px;">
+                    <a href="/post/<%= postCSS[0]._id %> ">
+                      <img
+                        src="/img/logo/<%= postCSS[0].logo %>"
+                        alt=""
+                        style="height: 180px;"
+                      />
+                    </a>
+                  </div>
+                  <div class="header-css">
+                    <a href="/post/<%= postCSS[0]._id %> ">
+                      <h5><%= postCSS[0].title %></h5>
+                    </a>
+                    <i class="fa fa-clock-o"><%= postCSS[0].date %></i>
+                    <i class="fa fa-eye"><%= postCSS[0].views %></i>
+                    <p>
+                      <%= postCSS[0].contentSub.substr(0,150) %>...
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <% for(let i = 1; i < postCSS.length; i++){ %> <% if(i ==
+              +postCSS.length - 1){ %>
+              <div class="col-lg-12 col-md-12">
+                <div class="box">
+                  <div class="img-contain" style="width: 120px; height: 120px;">
+                    <a href="/post/<%=postCSS[i]._id%>">
+                      <img
+                        src="/img/logo/<%=postCSS[i].logo%>"
+                        alt=""
+                        style="width: 120px; height: 120px;"
+                      />
+                    </a>
+                  </div>
+                  <div class="news-content">
+                    <a href="/post/<%=postCSS[i]._id%>">
+                      <p>
+                        <%=postCSS[i].title%>
+                      </p>
+                    </a>
+
+                    <i class="fa fa-clock-o"><%=postCSS[i].date%></i>
+                    <i class="fa fa-eye"><%=postCSS[i].views%></i>
+                  </div>
+                </div>
+              </div>
+              <% } else { %>
+              <div class="col-lg-12 col-md-12">
+                <div class="box">
+                  <div class="img-contain" style="width: 120px; height: 120px;">
+                    <a href="/post/<%=postCSS[i]._id%>">
+                      <img
+                        src="/img/logo/<%=postCSS[i].logo%>"
+                        alt=""
+                        style="width: 120px; height: 120px;"
+                      />
+                    </a>
+                  </div>
+                  <div class="news-content">
+                    <a href="/post/<%=postCSS[i]._id%>">
+                      <p>
+                        <%=postCSS[i].title%>
+                      </p>
+                    </a>
+
+                    <i class="fa fa-clock-o"><%=postCSS[i].date%></i>
+                    <i class="fa fa-eye"><%=postCSS[i].views%></i>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <% }%> <% } %>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-12" style="padding: 0;">
+            <div class="title title-left">
+              <a href="/category/HTML">HTML</a>
+              <div class="view-all">
+                <a href="/category/HTML">
+                  <i class="fa fa-bars"><span>All News</span></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-lg-12 col-md-12">
+                <div class="box clear">
+                  <div class="img-contain" style="height: 180px;">
+                    <a href="/post/<%=postHTML[0]._id%>">
+                      <img
+                        src="/img/logo/<%=postHTML[0].logo%>"
+                        alt=""
+                        style="height: 180px;"
+                      />
+                    </a>
+                  </div>
+                  <div class="header-css">
+                    <a href="#">
+                      <h5><%=postHTML[0].title%></h5>
+                    </a>
+                    <i class="fa fa-clock-o"><%=postHTML[0].date%></i>
+                    <i class="fa fa-eye"><%=postHTML[0].views%></i>
+                    <p>
+                      <%=postHTML[0].contentSub.substr(0,150)%>...
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+
+              <% for(let i = 1; i < postHTML.length; i++){ %> <% if(i ==
+              +postHTML.length - 1){ %>
+              <div class="col-lg-12 col-md-12">
+                <div class="box">
+                  <div class="img-contain" style="width: 120px; height: 120px;">
+                    <a href="/post/<%=postHTML[i]._id%>">
+                      <img
+                        src="/img/logo/<%=postHTML[i].logo%>"
+                        alt=""
+                        style="width: 120px; height: 120px;"
+                      />
+                    </a>
+                  </div>
+                  <div class="news-content">
+                    <a href="/post/<%=postHTML[i]._id%>">
+                      <p>
+                        <%=postHTML[i].title%>
+                      </p>
+                    </a>
+
+                    <i class="fa fa-clock-o"><%=postHTML[i].date%></i>
+                    <i class="fa fa-eye"><%=postHTML[i].views%></i>
+                  </div>
+                </div>
+              </div>
+              <% } else { %>
+              <div class="col-lg-12 col-md-12">
+                <div class="box">
+                  <div class="img-contain" style="width: 120px; height: 120px;">
+                    <a href="/post/<%=postHTML[i]._id%>">
+                      <img
+                        src="/img/logo/<%=postHTML[i].logo%>"
+                        alt=""
+                        style="width: 120px; height: 120px;"
+                      />
+                    </a>
+                  </div>
+                  <div class="news-content">
+                    <a href="/post/<%=postHTML[i]._id%>">
+                      <p>
+                        <%=postHTML[i].title%>
+                      </p>
+                    </a>
+
+                    <i class="fa fa-clock-o"><%=postHTML[i].date%></i>
+                    <i class="fa fa-eye"><%=postHTML[i].views%></i>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <% }%> <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="javascript-box">
+          <div class="title">
+            <a href="/category/Javascript">Javascript</a>
+            <div class="view-all">
+              <a href="/category/Javascript"
+                ><i class="fa fa-bars"><span>All News</span></i></a
+              >
+            </div>
+          </div>
+
+          <div class="row javascript-content mt-2">
+            <div class="col-lg-6 col-md 6 col-sm-12 javascript-header">
+              <div class="box">
+                <div class="img-contain">
+                  <a href="/post/<%=postJavascript[0]._id%>">
+                    <img src="/img/logo/<%=postJavascript[0].logo%>" alt="" />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="/post/<%=postJavascript[0]._id%>">
+                    <h5 class="text-white">
+                      <%=postJavascript[0].title%>
+                    </h5>
+                  </a>
+                  <i class="fa fa-clock-o text-white" style="color: white;"
+                    ><%=postJavascript[0].date%></i
+                  >
+                  <i class="fa fa-eye text-white" style="color: white;"
+                    ><%=postJavascript[0].views%></i
+                  >
+                  <p class="text-white">
+                    <%=postJavascript[0].contentSub.substr(0,250)%>...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm 12">
+              <% for(let i=1; i < postJavascript.length; i++){ %>
+              <div class="box">
+                <div class="img-contain" style="width: 140px; height: 100px;">
+                  <a href="/post/<%= postJavascript[i]._id %>">
+                    <img
+                      src="/img/logo/<%= postJavascript[i].logo %>"
+                      alt=""
+                      style="width: 140px; height: 100px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="/post/<%= postJavascript[i]._id %>">
+                    <p>
+                      <%= postJavascript[i].title %>
+                    </p>
+                  </a>
+                  <i class="fa fa-clock-o"><%= postJavascript[i].date %></i>
+                  <i class="fa fa-eye"><%= postJavascript[i].views %></i>
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="nodejs-box">
+          <div class="title">
+            <a href="/category/Nodejs">Nodejs</a>
+            <div class="view-all">
+              <a href="/category/Nodejs"
+                ><i class="fa fa-bars"><span>All News</span></i></a
+              >
+            </div>
+          </div>
+
+          <div class="row nodejs-content mt-2">
+            <% postNodejs.forEach(el => { %>
+            <div class="col-lg-4 col-md 6 col-sm-12">
+              <div class="box">
+                <div class="img-contain" style="width: 200px; height: 120px;">
+                  <a href="/post/<%= el._id %>">
+                    <img
+                      src="/img/logo/<%= el.logo %>"
+                      alt=""
+                      style="width: 200px; height: 120px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content mt-4">
+                  <a href="/post/<%= el._id %>">
+                    <h5>
+                      <%= el.title %>
+                    </h5>
+                  </a>
+                  <i class="fa fa-clock-o"><%= el.date %></i>
+                  <i class="fa fa-eye"><%= el.views %></i>
+                  <p>
+                    <%= el.contentSub.substr(0,150) %>...
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+
+        <div class="mongo-box">
+          <div class="title">
+            <a href="/category/Mongodb">Mongo</a>
+            <div class="view-all">
+              <a href="/category/Mongodb"
+                ><i class="fa fa-bars"><span>All News</span></i></a
+              >
+            </div>
+          </div>
+
+          <div class="row mongo-content mt-2">
+            <% postMongodb.forEach((el) => { %>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="box">
+                <div class="img-contain" style="height: 200px;">
+                  <a href="/post/e<%=el._id%>">
+                    <img
+                      src="/img/logo/<%=el.logo%>"
+                      alt=""
+                      style="height: 200px;"
+                    />
+                  </a>
+                </div>
+                <div class="news-content">
+                  <a href="/post/<%=el._id%>">
+                    <h5>
+                      <%=el.title%>
+                    </h5>
+                  </a>
+                  <i class="fa fa-clock-o"><%=el.date%></i>
+                  <i class="fa fa-eye"><%=el.views%></i>
+                  <p>
+                    <%=el.contentSub.substr(0,150)%>...
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+      <%-include("content-right")%>
+    </div>
+  </div>
+</div>

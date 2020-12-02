@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-md">
+  <a class="navbar-brand text-white font-weight-bold" href="/">Noob Boy</a>
+  <div>
+    <% if(username){ %>
+    <span class="toggle-icon text-white font-weight-bold d-sm-inline d-md-none"><%= username.username %> </span>
+    <% } %>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="toggle-icon"><i class="fa fa-bars"></i></span>
+    </button>
+    <% if(!username){ %>
+      <a href="/login" class="navbar-toggler text-white">
+        Sign In
+      </a>
+    <% } %> 
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-5 mr-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white <% if(urlActive == ""){ %> <%="active"%> <% } %> " href="/">HOME</a>
+      </li>
+      <% allTitle.forEach(el => { %>
+      <li class="nav-item">
+        <a class="nav-link text-white <% if(urlActive.split("?")[0] == el.name){ %> <%="active"%> <% } %>" href="/category/<%=el.name%>"
+          ><%=el.name%></a
+        >
+      </li>
+      <% }); %>
+      <% if(username){ %>
+        <li class="nav-item d-lg-none d-md-none d-sm-inline">
+          <a class="nav-link text-white sigon-out-hide" href="/logout">Sign out</a>
+        </li>
+      <% } %> 
+    </ul>
+  </div>
+
+  <% if(username){ %>
+    <div class="username">
+      <span class="text-white"><b><%= username.username %></b></span>
+      <a class="btn btn-outline-light my-2 my-lg-0 mr-3" href="/logout">
+        Sign Out
+      </a>
+    </div>
+  <% }else{ %>
+    <a class="logout-lg btn btn-outline-light my-2 my-lg-0 mr-3" href="/login">
+      Sign In
+    </a>
+  <% } %>
+  
+</nav>
